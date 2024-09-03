@@ -18,7 +18,7 @@ env:
 jobs:
   hacs:
     permissions: write-all
-    runs-on: "unraid"
+    runs-on: "selfhosted"
     name: Test and validate
     steps:
       - name: Check out the repository

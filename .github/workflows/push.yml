@@ -17,7 +17,7 @@ env:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   hacs:
-    runs-on: "unraid"
+    runs-on: "selfhosted"
     name: Test and validate
     steps:
       - name: Check out the repository
