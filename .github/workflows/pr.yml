@@ -24,6 +24,10 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v3
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          
       - run: npm install
       
       - name: Run Tests
