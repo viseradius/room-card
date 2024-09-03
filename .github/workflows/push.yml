@@ -39,10 +39,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          test-command: "npm run workflow"
+          test-command: "npm run coverage"
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONARCLOUD_TOKEN }}
 
       - name: HACS validation
         uses: hacs/action@main
