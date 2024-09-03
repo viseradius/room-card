@@ -40,6 +40,21 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           test-command: "npm run coverage"
+        
+      - name: Get Latest Tag
+        id: get_latest_tag
+        run: |
+          # Get the latest tag of the current branch
+          LATEST_TAG=$(git describe --tags $(git rev-list --tags --max-count=1))
+          echo "Latest tag is $LATEST_TAG"
+          echo "::set-output name=latest_tag::$LATEST_TAG"
+  
+      - name: Update File with Latest Tag
+        run: |
+          # Update the file with the latest tag
+          LATEST_TAG=${{ steps.get_latest_tag.outputs.latest_tag }}
+          # Replace the line with the latest tag in your file (e.g., version.txt)
+          sed -i "s/^sonar.projectVersion=.*/sonar.projectVersion=$LATEST_TAG/" sonar-project.properties
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
