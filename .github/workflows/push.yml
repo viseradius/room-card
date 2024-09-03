@@ -46,9 +46,9 @@ jobs:
           category: "plugin"
           ignore: brands
 
-      - name: Automatic GitHub Release
-        uses: marcokreeft87/github-action-npm-release@1.0.0
+      # - name: Automatic GitHub Release
+      #   uses: marcokreeft87/github-action-npm-release@1.0.0
 
-      - name: Print release output
-        if: ${{ steps.release.outputs.released == 'true' }}
-        run: echo Release ID ${{ steps.release.outputs.release_id }}
+      # - name: Print release output
+      #   if: ${{ steps.release.outputs.released == 'true' }}
+      #   run: echo Release ID ${{ steps.release.outputs.release_id }}
